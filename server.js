@@ -50,18 +50,10 @@ app.get("/create-room/", (req, res) => {
     res.redirect(`/${uuidv4()}`);
 });
 
-// Handling request 
-app.post("/request", (req, res) => {
-    res.json([{
-       video_user: req.body.name,
-    }])
- })
-
 //video-chat room with a unique ID
 app.get('/:room',(req,res) => {
     res.render('room',{ roomId : req.params.room })
 })
-
 
 //when the user makes a connection on the socket
 io.on('connection', socket => {
@@ -110,7 +102,9 @@ io.on('connection', socket => {
         
             }
         }
-        
+        socket.on('delete-history',roomName => {
+            deleteChatFile(roomName);
+        })
 
         // Broadcast when a user connects
         socket.broadcast.to(user.room).emit('notification',formatMessage('Admin', `${user.username} has joined the chat!`));
@@ -168,16 +162,20 @@ io.on('connection', socket => {
         
     });
 
-
-
    
+
 })
+function deleteChatFile(room){
+    let filePath = "./chats/" + room +".json";
+    fs.unlink(filePath, (err) => {
+    if (err) throw err;
+    console.log('Successfully deleted ' +room +".json file..");
+  });
+};
 
 const port =  process.env.PORT || 3030; // Port we will listen on
 
-const directory = "C:/Users/kbinw/Binwant/WORK/Teams-Clone/chats/";
-
-
+const directory = "./chats/";
 
 
 // Function to listen on the port

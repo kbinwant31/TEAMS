@@ -75,14 +75,20 @@ chatForm.addEventListener('submit', (e) => {
 
 function sendMessage(msg){
   //Append
-  outputMyMessage(msg);
+  const time = new Date();
+  const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+  let textMessage = {
+    text:msg,
+    time:formattedTime
+  }
+  outputMyMessage(textMessage);
   //send to server
   socket.emit('chat_message',msg);
 }
 
 socket.on('messageHistory',oldMessage => {
   if(oldMessage.username==username){
-    outputMyMessage(oldMessage.text);
+    outputMyMessage(oldMessage);
   } else {
     outputUserMessage(oldMessage);
   }
@@ -97,19 +103,17 @@ socket.on('text', messageText => {
 });
 
 //function to output my message to DOM of my own window
-function outputMyMessage(text) {
-  const time = new Date();
-  const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+function outputMyMessage(textMessage) {
   const div = document.createElement('div');
   div.classList.add('message','me');
   div.innerHTML = `
   <div class="text-main">
   <div class="text-group me">
     <div class="text me">
-      <p>${text}</p>
+      <p>${textMessage.text}</p>
     </div>
   </div>
-  <span>${formattedTime}</span>
+  <span>${textMessage.time}</span>
   </div>`;
   document.getElementById("chatContainer").appendChild(div);
   scrollBottom("chatContainer");
@@ -146,9 +150,6 @@ function scrollBottom(id){
   var element = document.getElementById(id);
   element.scrollTop = element.scrollHeight - element.clientHeight;
 }
-function getRoomURL() {
-  return location.protocol + "//" + location.host + room;
-}
 
 //to redirect user to the video call room with the same name as the chat-room
 //and to show the conversation from the chat room in the video call chat
@@ -157,3 +158,8 @@ function goToVideo() {
 }
 
 document.getElementById("goToVideoRoom").addEventListener("click", goToVideo);
+
+$('#clear-history').click(function (){
+  socket.emit('delete-history',room);
+  location.reload();
+})

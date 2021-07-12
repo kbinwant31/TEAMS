@@ -2,7 +2,7 @@
 const fs = require("fs");
 const moment = require("moment");
 
-const directory = "C:/Users/kbinw/Binwant/WORK/Teams-Clone/chats/";
+const directory =  "./chats/";
 
 function readMessage(room){
     var filePath = directory + room + ".json";
@@ -33,27 +33,6 @@ function sendReadMessages(filePath,room){
     }
 }
 
-// function readMessage(room) {
-//     var filePath = directory + room + ".json";
-//     //let messageArray;
-//     fs.access(filePath, fs.F_OK, (err) => {
-//         if (err) {
-//             console.log("return false");
-//             return;
-//         } else {
-//             //file exists so retrieve messages
-//             console.log("return True...");
-//             console.log("Room Exists! Reading messages..")
-//             const filePath = directory + room + ".json";
-//             let data = fs.readFile(filePath);
-//             var messData = JSON.parse(data);
-//             //adding the new data to old and create another object
-//             //console.log(typeof(messData.table)); 
-//             sendMessageArray( messData.table);
-//             return;
-//         }
-//     });
-// }
 
 function sendMessageArray(messageArray){
     //console.log(messageArray[0].message);

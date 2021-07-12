@@ -46,7 +46,7 @@
 										<button class="btn create" data-toggle="modal" data-target="#startnewchat" title="Create new chatroom!"><i class="material-icons">create</i></button>
 									</div>					
 									<div class="discussions">
-										<h1>Members</h1>
+										<h1>Online Users</h1>
 										<div class=" list-group" id="users" role="tablist">
 											
 											<!--Append the name of the members of the chat room here-->
@@ -69,14 +69,14 @@
 								<button type="button" class="btn" data-dismiss="modal" aria-label="Close"><i class="material-icons">close</i></button>
 							</div>
 							<div class="content">
-								<form>
+								<form action="chat-room.html">
 									<div class="form-group">
 										<label for="topic">Room Name:</label>
-										<input type="text" class="form-control" id="roomName" placeholder="Enter room name..." required>
+										<input type="text" class="form-control" id="chat_room" placeholder="Enter room name..." required>
 									</div>
 									<div class="form-group">
-										<label for="message">Message:</label>
-										<textarea class="text-control" id="message" placeholder="Send your welcome message...">Hmm, are you friendly?</textarea>
+										<label for="message">Name:</label>
+										<input class="text-control" id="username" placeholder="Username">
 									</div>
 									<button type="submit" class="btn button w-100">Start New Chat</button>
 								</form>
@@ -107,9 +107,8 @@
 												<div class="dropdown">
 													<button class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons md-30">more_vert</i></button>
 													<div class="dropdown-menu dropdown-menu-right">
-														<button class="dropdown-item connect" name="1" id="goToVideoRoom"><i class="material-icons">videocam</i>Video Call</button>
-														<hr>
-														<button class="dropdown-item"><i class="material-icons">clear</i>Clear History</button>
+														
+														<button class="dropdown-item" id="clear-history"><i class="material-icons">clear</i>Clear History</button>
 													</div>
 												</div>
 											</div>
