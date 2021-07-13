@@ -28,7 +28,7 @@
 								<button class="btn nav-profile"><i class="material-icons">account_circle</i></button>
 								<a href="chat.html" data-toggle="tab" class="active"><i class="material-icons active">chat_bubble_outline</i></a>
 								<a href="video.html"  class="f-grow1 active"><span class="material-icons">videocam</span></a>
-								<button href="chat.html" class="btn power" onclick="visitPage();"><i class="material-icons">power_settings_new</i></button>
+								<a href="chat.html"><button href="chat.html" class="btn power"><i class="material-icons">power_settings_new</i></button></a>
 							</div>
 						</div>
 					</div>
@@ -105,9 +105,10 @@
 												</div>
 												<button class="btn connect d-md-block d-none" name="1" id="goToVideoRoom"><i class="material-icons md-36">videocam</i></button>
 												<div class="dropdown">
-													<button class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons md-30">more_vert</i></button>
+													<button class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														<i class="material-icons md-30">more_vert</i>
+													</button>
 													<div class="dropdown-menu dropdown-menu-right">
-														
 														<button class="dropdown-item" id="clear-history"><i class="material-icons">clear</i>Clear History</button>
 													</div>
 												</div>
@@ -123,6 +124,7 @@
 											<!--The messages will append here--->
 										
 										</div>
+										<a name="pointToScrollTo"></a>
 									</div>
 								</div>
 								<div class="container">
@@ -172,6 +174,11 @@
 		<!-- Bootstrap/Swipe core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
+		<script>
+			$(document).ready(function(){
+				$('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
+			})
+		 </script>
 		<script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-slim.min.js"><\/script>')</script>
 		<script src="js/vendor/popper.min.js"></script>

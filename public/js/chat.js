@@ -23,7 +23,6 @@ socket.on('roomUsers', ({ room, users }) => {
 socket.on('notification', notifText => {
   console.log(notifText);
   outputNotification(notifText);
-  //scroll down after every message
 });
 
 // Add room name to DOM
@@ -65,10 +64,7 @@ chatForm.addEventListener('submit', (e) => {
     return false;
   }
   sendMessage(messg)
-    //to emit the message to the server
-    //socket.emit('chat_message',msg);
-    //clear the input in the input text message field
-  
+  //clear the input in the input text message field
   e.target.elements.msg.value = '';
   e.target.elements.msg.focus();
 });
@@ -145,6 +141,7 @@ function outputNotification(text) {
   div.innerHTML = `<span>${text.text}</span>`;
   document.getElementById("chatContainer").appendChild(div);
 }
+
 //function to scoll to bottom after every message
 function scrollBottom(id){
   var element = document.getElementById(id);

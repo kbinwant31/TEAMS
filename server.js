@@ -39,7 +39,6 @@ app.use(express.static('public'));
 //setup peer server
 app.use('/peerjs', peerServer);
 
-
 // Route to Chat login page
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/chat.html');
