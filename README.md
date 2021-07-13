@@ -14,3 +14,5 @@ When the user ends the video call and enters the chat room again all the chats f
 
 For implementing this the chats are stored in JSON file named accoring to the chat-room name and whenever a user connects the messages stored in JSON file are retrieved and displayed in the chat.
 There is also a feature for deleting chat history in the chat room on right left corner - a drop down menu.
+
+----NOTE: the chat history feature is not working in the deployed version of the app.----
